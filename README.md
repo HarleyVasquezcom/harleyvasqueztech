@@ -2,8 +2,8 @@
 
 Sitio estático multi-página (35 páginas) de servicios, productos y zonas para SEO local en Bogotá. Rediseñado con el sistema UI/UX del demo **cam-launch** (expo "Semana de la Cámara" de VigilCam): tema oscuro mono (`#09090b`), acento naranja `#fb923c` + violeta `#a78bfa`, bordes punteados, stickers girados, tarjetas con borde perforado de boleto y código de barras en el footer.
 
-- **Demo en Vercel:** https://tecnoandina.vercel.app
-- **Repositorio:** https://github.com/HarleyVasquezcom/tecnoandina
+- **Demo en Vercel:** https://harleyvasqueztech.vercel.app
+- **Repositorio:** https://github.com/HarleyVasquezcom/harleyvasqueztech
 - **Diseño fuente:** https://cam-launch.vercel.app (también en el monorepo `portfolio-demos`)
 
 ## Estructura
@@ -47,4 +47,4 @@ Chequeos: HTTP 200 en las 35 páginas, HTML balanceado (divs/sections/footer/a),
 
 ## Historial
 
-- **2026-08-08** — Rediseño completo con sistema UI/UX de cam-launch (tema oscuro mono, naranja/violeta, bordes punteados, stickers, ticket-mask, barcode). Repo dedicado `HarleyVasquezcom/tecnoandina`, desplegado en Vercel.
+- **2026-08-08** — Rediseño completo con sistema UI/UX de cam-launch (tema oscuro mono, naranja/violeta, bordes punteados, stickers, ticket-mask, barcode). Repo dedicado `HarleyVasquezcom/harleyvasqueztech`, desplegado en Vercel.
