@@ -320,6 +320,7 @@ h1, h2, h3, h4 {
   background: var(--bg); border-top: 2px dashed var(--line-soft);
   padding: 16px 0; overflow: hidden;
 }
+.marquee-band.band-footer { border-top: 0; }
 .marquee-track { display: flex; width: max-content; animation: marquee-scroll 93.33s linear infinite; }
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-group { display: flex; gap: 48px; align-items: center; padding-right: 48px; }
