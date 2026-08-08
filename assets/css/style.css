@@ -5,8 +5,8 @@
    ============================================================ */
 
 :root {
-  --bg: #09090b; --panel: #101013; --panel2: #15151a;
-  --line: #26262c; --line-soft: #1c1c21;
+  --bg: #060608; --panel: #151519; --panel2: #1b1b22;
+  --line: #313139; --line-soft: #24242b;
   --text: #fafafa; --muted: #a1a1aa; --faint: #6b6b74;
   --accent: #fb923c; --accent-soft: rgba(251,146,60,.14);
   --accent-glow: rgba(251,146,60,.45);
@@ -129,7 +129,7 @@ h1, h2, h3, h4 {
 
 .header {
   position: sticky; top: 0; z-index: 60;
-  background: rgba(9,9,11,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: rgba(6,6,8,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line-soft); transition: border-color .3s ease, box-shadow .3s ease;
 }
 .header.scrolled { border-color: var(--line); box-shadow: 0 10px 30px -18px rgba(0,0,0,.6); }
@@ -186,7 +186,7 @@ h1, h2, h3, h4 {
 .hero-slide.active { opacity: 1; }
 .hero-slides::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(to left, rgba(9,9,11,.25) 0%, rgba(9,9,11,.55) 40%, rgba(9,9,11,.94) 78%, #09090b 100%);
+  background: linear-gradient(to left, rgba(6,6,8,.25) 0%, rgba(6,6,8,.55) 40%, rgba(6,6,8,.94) 78%, #060608 100%);
 }
 .hero::before {
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -387,7 +387,7 @@ h1, h2, h3, h4 {
 .cat-card:hover .cat-img img { transform: scale(1.06); }
 .cat-card .cat-body {
   position: absolute; inset: auto 0 0 0; padding: 60px 22px 20px;
-  background: linear-gradient(transparent, rgba(9,9,11,.94));
+  background: linear-gradient(transparent, rgba(6,6,8,.94));
   color: #fff;
 }
 .cat-card .cat-tag {
@@ -490,7 +490,7 @@ h1, h2, h3, h4 {
   position: relative; overflow: hidden; color: #fff;
   background-color: var(--bg);
   background-image:
-    linear-gradient(to left, rgba(9,9,11,.25) 0%, rgba(9,9,11,.55) 40%, rgba(9,9,11,.94) 78%, #09090b 100%),
+    linear-gradient(to left, rgba(6,6,8,.25) 0%, rgba(6,6,8,.55) 40%, rgba(6,6,8,.94) 78%, #060608 100%),
     var(--hero-img);
   background-size: cover; background-position: center; background-repeat: no-repeat;
   padding: 88px 0 70px;
@@ -548,7 +548,7 @@ h1, h2, h3, h4 {
 .video-card .play:hover { transform: scale(1.1); filter: brightness(1.05); }
 .video-card .v-label {
   position: absolute; left: 18px; bottom: 16px;
-  background: rgba(9,9,11,.85); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  background: rgba(6,6,8,.85); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   color: #fff; font-size: 12px; padding: 8px 15px; border-radius: 4px;
   display: inline-flex; gap: 8px; align-items: center; border: 1px dashed rgba(251,146,60,.4);
 }
@@ -759,7 +759,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero .container, .page-hero .container, .split, .contact-grid { grid-template-columns: 1fr; }
   .hero, .page-hero {
     background-image:
-      linear-gradient(to left, rgba(9,9,11,.3) 0%, rgba(9,9,11,.92) 55%, #09090b 100%),
+      linear-gradient(to left, rgba(6,6,8,.3) 0%, rgba(6,6,8,.92) 55%, #060608 100%),
       var(--hero-img);
   }
   .hero { padding: 80px 0; }
@@ -773,7 +773,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .nav-toggle { display: flex; }
   .nav-links {
     position: absolute; top: 66px; left: 0; right: 0;
-    background: rgba(9,9,11,.97); border-bottom: 1px solid var(--line);
+    background: rgba(6,6,8,.97); border-bottom: 1px solid var(--line);
     flex-direction: column; align-items: stretch; padding: 10px 4%;
     gap: 4px; display: none; box-shadow: 0 30px 40px -30px rgba(0,0,0,.7);
   }
