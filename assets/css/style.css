@@ -50,7 +50,7 @@ a:where(:not(.card):not(.cat-card):not(.btn):not(.brand):not(.wa-float):not(.nav
 }
 a:not(.card):not(.cat-card):not(.btn):not(.brand):not(.wa-float):not(.nav-links a):not(.topbar a):not(.social a):hover,
 a:not(.card):not(.cat-card):not(.btn):not(.brand):not(.wa-float):not(.nav-links a):not(.topbar a):not(.social a):focus-visible {
-  transform: translateX(8px) scale(1.08);
+  transform: translateY(-8px) scale(1.04);
   transform-origin: bottom center;
 }
 
@@ -371,7 +371,7 @@ h1, h2, h3, h4 {
   transition: transform .6s cubic-bezier(.2,.8,.3,1), color .2s ease;
 }
 .card:hover .link, .cat-card:hover .link {
-  transform: translateX(8px) scale(1.08);
+  transform: translateY(-8px) scale(1.04);
   transform-origin: bottom center;
 }
 
