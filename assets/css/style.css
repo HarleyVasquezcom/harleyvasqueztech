@@ -427,7 +427,7 @@ h1, h2, h3, h4 {
 /* ---------- Testimonios ---------- */
 
 .testi {
-  background: var(--grad-panel-v); border: 1px dashed var(--line-soft); border-radius: 0;
+  background: linear-gradient(90deg, var(--bg) 0%, var(--panel) 100%); border: 1px dashed var(--line-soft); border-radius: 0;
   padding: 26px; position: relative;
 }
 .testi::before {
@@ -602,6 +602,9 @@ td .no { color: var(--faint); }
 }
 .step:hover { border-color: var(--accent); transform: translateY(-4px); }
 .steps-atten .step {
+  background: linear-gradient(90deg, var(--bg) 0%, var(--panel) 100%);
+}
+.blog-grid .card {
   background: linear-gradient(90deg, var(--bg) 0%, var(--panel) 100%);
 }
 .step .n {
