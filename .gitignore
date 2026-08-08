@@ -1,0 +1,12 @@
+# Backups de versiones anteriores
+Old version/
+1Old version/
+
+# Seeds internos de Traycer
+seeds/
+
+# Archivo accidental del sistema
+System.Drawing.Drawing2D.GraphicsPath
+
+# Vercel
+.vercel/
