@@ -305,7 +305,7 @@ h1, h2, h3, h4 {
 
 .marquee-band {
   background: var(--bg); border-top: 2px dashed var(--line-soft);
-  border-bottom: 2px dashed var(--line-soft); padding: 16px 0; overflow: hidden;
+  padding: 16px 0; overflow: hidden;
 }
 .marquee-track { display: flex; width: max-content; animation: marquee-scroll 93.33s linear infinite; }
 .marquee-track:hover { animation-play-state: paused; }
@@ -694,7 +694,7 @@ td .no { color: var(--faint); }
 
 .footer {
   background: var(--bg); color: var(--muted); padding: 70px 0 0;
-  border-top: 2px dashed var(--line-soft); margin-top: 60px;
+  border-top: 2px dashed var(--line-soft);
 }
 .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr 1fr; gap: 22px; padding-bottom: 54px; }
 .footer h4 { color: var(--faint); font-size: 11px; margin-bottom: 14px; letter-spacing: .2em; text-transform: uppercase; }
