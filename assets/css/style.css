@@ -166,8 +166,9 @@ h1, h2, h3, h4 {
 .nav-links a {
   padding: 8px 14px; border-radius: 8px; font-size: 13.5px; color: var(--muted);
   transition: color .2s ease, background .2s ease; font-family: var(--mono);
+  border: 1px dashed transparent;
 }
-.nav-links a:hover { color: var(--text); background: var(--panel2); }
+.nav-links a:hover { color: var(--text); background: var(--accent-soft); border-color: var(--accent); }
 .nav-links a.active { color: var(--accent); }
 
 .nav-cta { display: flex; gap: 10px; align-items: center; }
