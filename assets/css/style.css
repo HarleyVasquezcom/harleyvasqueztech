@@ -400,7 +400,7 @@ h1, h2, h3, h4 {
 /* ---------- Planes ---------- */
 
 .plan {
-  background: var(--grad-panel); border: 1px dashed var(--line-soft); border-radius: 0;
+  background: linear-gradient(90deg, var(--bg) 0%, var(--panel) 100%); border: 1px dashed var(--line-soft); border-radius: 0;
   padding: 30px 28px; display: flex; flex-direction: column; position: relative;
   transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
 }
@@ -620,7 +620,7 @@ td .no { color: var(--faint); }
 
 .faq { max-width: 780px; margin-inline: auto; }
 .faq details {
-  background: var(--grad-panel); border: 1px dashed var(--line-soft); border-radius: 0;
+  background: linear-gradient(90deg, var(--bg) 0%, var(--panel) 100%); border: 1px dashed var(--line-soft); border-radius: 0;
   margin-bottom: 12px; overflow: hidden; transition: border-color .2s ease;
 }
 .faq details[open] { border-color: var(--accent); }
