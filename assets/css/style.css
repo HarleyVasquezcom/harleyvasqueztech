@@ -367,6 +367,13 @@ h1, h2, h3, h4 {
 .card .link svg { width: 15px; height: 15px; transition: transform .2s ease; }
 .card:hover .link svg { transform: translateX(4px); }
 .card .link:hover { color: var(--violet); }
+.card .link, .cat-card .link {
+  transition: transform .6s cubic-bezier(.2,.8,.3,1), color .2s ease;
+}
+.card:hover .link, .cat-card:hover .link {
+  transform: translateX(8px) scale(1.2);
+  transform-origin: left center;
+}
 
 /* ---------- Feature split ---------- */
 
