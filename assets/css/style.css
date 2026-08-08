@@ -50,8 +50,8 @@ a:where(:not(.card):not(.cat-card):not(.btn):not(.brand):not(.wa-float):not(.nav
 }
 a:not(.card):not(.cat-card):not(.btn):not(.brand):not(.wa-float):not(.nav-links a):not(.topbar a):not(.social a):hover,
 a:not(.card):not(.cat-card):not(.btn):not(.brand):not(.wa-float):not(.nav-links a):not(.topbar a):not(.social a):focus-visible {
-  transform: translateX(8px) scale(1.2);
-  transform-origin: left center;
+  transform: translateX(8px) scale(1.08);
+  transform-origin: bottom center;
 }
 
 ul { list-style: none; }
@@ -371,8 +371,8 @@ h1, h2, h3, h4 {
   transition: transform .6s cubic-bezier(.2,.8,.3,1), color .2s ease;
 }
 .card:hover .link, .cat-card:hover .link {
-  transform: translateX(8px) scale(1.2);
-  transform-origin: left center;
+  transform: translateX(8px) scale(1.08);
+  transform-origin: bottom center;
 }
 
 /* ---------- Feature split ---------- */
