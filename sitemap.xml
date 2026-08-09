@@ -1,173 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://harleyvasquez.unaux.com/index.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/servicios.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/productos.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/contacto.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/blog.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://harleyvasqueztech.vercel.app/aprende.html</loc>
+    <lastmod>2026-08-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/aprende.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://harleyvasqueztech.vercel.app/articulo-backup-pymes.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/articulo-instala-programas.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/articulo-instalacion-pc-nuevo.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/articulo-mantenimiento-preventivo.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/articulo-organiza-datos.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/articulo-pc-lento.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/articulo-soporte-remoto-domicilio.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/articulo-virus-ransomware.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/articulo-wifi-lento.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/articulo-windows-actualizado.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/blog.html</loc>
+    <lastmod>2026-08-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/servicio-soporte-tecnico.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://harleyvasqueztech.vercel.app/contacto.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/index.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/producto-computadores.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/producto-perifericos.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/producto-redes.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/producto-servidores.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/producto-software.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/producto-ups.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/productos.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/servicio-ciberseguridad.html</loc>
+    <lastmod>2026-08-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/servicio-mantenimiento-computadores.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://harleyvasqueztech.vercel.app/servicio-cloud.html</loc>
+    <lastmod>2026-08-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/servicio-redes.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.7</priority>
+    <loc>https://harleyvasqueztech.vercel.app/servicio-datacenter.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/servicio-ciberseguridad.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.7</priority>
+    <loc>https://harleyvasqueztech.vercel.app/servicio-mantenimiento-computadores.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/servicio-cloud.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.7</priority>
+    <loc>https://harleyvasqueztech.vercel.app/servicio-redes.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/servicio-datacenter.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.7</priority>
+    <loc>https://harleyvasqueztech.vercel.app/servicio-soporte-tecnico.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/producto-computadores.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/producto-perifericos.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/producto-redes.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/producto-servidores.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/producto-software.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/producto-ups.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/zona-chapinero.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://harleyvasqueztech.vercel.app/servicios.html</loc>
+    <lastmod>2026-08-09</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/zona-teusaquillo.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://harleyvasqueztech.vercel.app/zona-barrios-unidos.html</loc>
+    <lastmod>2026-08-09</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/zona-barrios-unidos.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://harleyvasqueztech.vercel.app/zona-chapinero.html</loc>
+    <lastmod>2026-08-09</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/zona-usaquen.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://harleyvasqueztech.vercel.app/zona-la-candelaria.html</loc>
+    <lastmod>2026-08-09</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/zona-la-candelaria.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://harleyvasqueztech.vercel.app/zona-puente-aranda.html</loc>
+    <lastmod>2026-08-09</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/zona-puente-aranda.html</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://harleyvasqueztech.vercel.app/zona-teusaquillo.html</loc>
+    <lastmod>2026-08-09</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://harleyvasquez.unaux.com/articulo-backup-pymes.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/articulo-instalacion-pc-nuevo.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/articulo-instala-programas.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/articulo-mantenimiento-preventivo.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/articulo-organiza-datos.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/articulo-pc-lento.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/articulo-soporte-remoto-domicilio.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/articulo-virus-ransomware.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/articulo-wifi-lento.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://harleyvasquez.unaux.com/articulo-windows-actualizado.html</loc>
-    <lastmod>2026-08-05</lastmod>
-    <priority>0.5</priority>
+    <loc>https://harleyvasqueztech.vercel.app/zona-usaquen.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <priority>0.9</priority>
   </url>
 </urlset>
