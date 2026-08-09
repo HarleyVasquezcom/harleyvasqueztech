@@ -84,7 +84,7 @@ h1, h2, h3, h4 {
 
 .sec-head { max-width: 700px; margin-bottom: 44px; }
 .sec-head h2 { font-size: clamp(26px, 4vw, 40px); margin: 12px 0 10px; letter-spacing: -.02em; }
-.sec-head h2 .accent, .hero h1 .accent {
+.sec-head h2 .accent, .hero-titles h1 .accent, .hero-titles h2 .accent {
   background: linear-gradient(90deg, var(--accent), var(--violet));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
@@ -243,14 +243,14 @@ h1, h2, h3, h4 {
 @keyframes pulse { 50% { opacity: .35; } }
 
 .hero-titles { display: grid; }
-.hero h1 {
+.hero-titles h1, .hero-titles h2 {
   grid-area: 1 / 1;
   font-size: clamp(30px, 4.6vw, 52px); margin: 0 0 18px;
   letter-spacing: -.03em; line-height: 1.1; font-weight: 800;
   opacity: 0; transition: opacity 1.2s ease; font-family: var(--mono);
 }
-.hero h1.active { opacity: 1; }
-.hero h1 .accent { color: transparent; }
+.hero-titles h1.active, .hero-titles h2.active { opacity: 1; }
+.hero-titles h1 .accent, .hero-titles h2 .accent { color: transparent; }
 
 .hero p.lead { color: var(--muted); font-size: 16px; max-width: 540px; margin-top: 0; }
 

@@ -235,7 +235,7 @@
 
   /* Hero slider: crossfade de imagenes y titulos */
   var heroSlides = document.querySelectorAll('.hero-slide');
-  var heroTitles = document.querySelectorAll('.hero-titles h1');
+  var heroTitles = document.querySelectorAll('.hero-titles h1, .hero-titles h2');
   if (heroSlides.length && heroTitles.length) {
     var hIdx = 0;
     setInterval(function () {
