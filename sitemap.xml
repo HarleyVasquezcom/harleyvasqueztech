@@ -76,6 +76,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://harleyvasqueztech.vercel.app/producto-alarmas.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/producto-control-acceso.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://harleyvasqueztech.vercel.app/producto-perifericos.html</loc>
     <lastmod>2026-08-09</lastmod>
     <priority>0.6</priority>
@@ -113,6 +123,16 @@
   <url>
     <loc>https://harleyvasqueztech.vercel.app/servicio-cloud.html</loc>
     <lastmod>2026-08-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/servicio-alarmas.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://harleyvasqueztech.vercel.app/servicio-control-acceso.html</loc>
+    <lastmod>2026-08-14</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
