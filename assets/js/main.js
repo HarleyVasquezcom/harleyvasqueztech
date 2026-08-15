@@ -299,10 +299,12 @@
     host.style.touchAction = 'pan-y';
 
     var x = 0, v = 0, target = 0, raf = null, settled = true, manual = false;
-    var startX = 0, baseX = 0, moved = false, pointerId = null, wheelTimer = null, pressing = false;
+    var startX = 0, baseX = 0, moved = false, dragging = false, pointerId = null, wheelTimer = null, pressing = false;
 
     var tick = function () {
-      v = v * 0.92 + (target - x) * 0.095;
+      var k = dragging ? 0.16 : 0.02;
+      var d = dragging ? 0.9 : 0.94;
+      v = v * d + (target - x) * k;
       x += v;
       pan.style.transform = 'translateX(' + x + 'px)';
       if (Math.abs(target - x) < 0.3 && Math.abs(v) < 0.05) {
@@ -355,12 +357,13 @@
       if (e.pointerId !== pointerId) return;
       var dx = e.clientX - startX;
       if (!moved && Math.abs(dx) > 4) { moved = true; host.classList.add('dragging'); }
-      if (moved) { target = baseX + dx; startLoop(); }
+      if (moved) { dragging = true; target = baseX + dx; startLoop(); }
     });
     host.addEventListener('pointerup', function (e) {
       if (e.pointerId !== pointerId) return;
       pointerId = null;
       pressing = false;
+      dragging = false;
       host.classList.remove('dragging');
       if (moved) {
         document.addEventListener('click', function kill(ev) {
