@@ -1,6 +1,6 @@
 # TecnoAndina — Soporte y Mantenimiento Informático (Bogotá)
 
-Sitio estático multi-página (39 páginas) de servicios, productos y zonas para SEO local en Bogotá. Rediseñado con el sistema UI/UX del demo **cam-launch** (expo "Semana de la Cámara" de VigilCam): tema oscuro mono (`#09090b`), acento naranja `#fb923c` + violeta `#a78bfa`, bordes punteados, stickers girados, tarjetas con borde perforado de boleto y código de barras en el footer.
+Sitio estático multi-página (58 páginas) de servicios, productos y zonas para SEO local en Bogotá. Rediseñado con el sistema UI/UX del demo **cam-launch** (expo "Semana de la Cámara" de VigilCam): tema oscuro mono (`#09090b`), acento naranja `#fb923c` + violeta `#a78bfa`, bordes punteados, stickers girados, tarjetas con borde perforado de boleto y código de barras en el footer.
 
 - **Demo en Vercel:** https://harleyvasqueztech.vercel.app
 - **Repositorio:** https://github.com/HarleyVasquezcom/harleyvasqueztech
@@ -11,10 +11,10 @@ Sitio estático multi-página (39 páginas) de servicios, productos y zonas para
 | Área | Archivos | Detalle |
 |---|---|---|
 | Inicio | `index.html` | Hero, servicios destacados, zonas, Blog/Aprende, CTA |
-| Servicios | `servicios.html`, `servicio-*.html` (8) | Soporte, redes, cloud, datacenter, ciberseguridad, mantenimiento, control de acceso, alarmas |
-| Productos | `productos.html`, `producto-*.html` (8) | Computadores, periféricos, redes, servidores, software, UPS, control de acceso, alarmas |
+| Servicios | `servicios.html`, `servicio-*.html` (9) | Soporte, mantenimiento, redes, ciberseguridad, cloud, datacenter, videovigilancia, control de acceso, alarmas |
+| Productos | `productos.html`, `producto-*.html` (9) | Computadores, periféricos, redes, servidores, software, UPS, cámaras, control de acceso, alarmas |
 | Zonas | `zona-*.html` (6) | Barrios Unidos, Chapinero, La Candelaria, Puente Aranda, Teusaquillo, Usaquén |
-| Blog | `blog.html`, `articulo-*.html` (10) | Guías prácticas por zona |
+| Blog | `blog.html`, `articulo-*.html` (28) | 10 guías prácticas por zona + 18 entradas de blog (una por producto/servicio), todas ancladas a su zona |
 | Aprende | `aprende.html` | 4 módulos guiados |
 | Contacto | `contacto.html` | Formulario + WhatsApp `wa.me/573182020729` |
 
@@ -26,7 +26,7 @@ Sitio estático multi-página (39 páginas) de servicios, productos y zonas para
 
 ## SEO y PWA
 
-- `sitemap.xml`, `robots.txt`, `manifest.webmanifest`, iconos 192/512/maskable, `sw.js` con caché versionada.
+- `sitemap.xml` (58 URLs), `robots.txt`, `manifest.webmanifest`, iconos 192/512/maskable, `sw.js` con caché versionada (v84).
 - Meta SEO/OG por página, `lang="es"`, `geo.*` para Bogotá (CO-DC), JSON-LD `LocalBusiness`.
 
 ## Despliegue
@@ -35,7 +35,7 @@ Sitio estático multi-página (39 páginas) de servicios, productos y zonas para
 npx vercel --prod --yes
 ```
 
-Verificación post-deploy: hash MD5 local == remoto y smoke CDP (200 + componentes presentes) en las 39 páginas.
+Verificación post-deploy: hash MD5 local == remoto y smoke CDP (200 + componentes presentes) en las 58 páginas.
 
 ## Verificación local
 
@@ -43,9 +43,10 @@ Verificación post-deploy: hash MD5 local == remoto y smoke CDP (200 + component
 python -m http.server 8000   # o cualquier servidor estático en localhost:8000
 ```
 
-Chequeos: HTTP 200 en las 39 páginas, HTML balanceado (divs/sections/footer/a), 0 enlaces rotos, 0 mojibake (UTF-8 puro).
+Chequeos: HTTP 200 en las 58 páginas, HTML balanceado (divs/sections/footer/a), 0 enlaces rotos, 0 mojibake (UTF-8 puro).
 
 ## Historial
 
+- **2026-08-14** — 18 entradas de blog (una por producto y servicio, `articulo-*.html`), sección **Noticias** con 18 tarjetas en `blog.html`, hero CSS bump `?v=112`, `sitemap.xml` (58 URLs, incluye `producto-camaras.html` y `servicio-videovigilancia.html` faltantes), `sw.js` (v84), `README.md` actualizados.
 - **2026-08-14** — Nuevas secciones Control de Acceso y Citofonía y Alarmas: `servicio-control-acceso.html`, `servicio-alarmas.html`, `producto-control-acceso.html`, `producto-alarmas.html` (39 páginas). Tarjetas y enlaces de footer en `index.html`, `servicios.html`, `productos.html`; `sitemap.xml`, `sw.js` (v83), `README.md` actualizados.
 - **2026-08-08** — Rediseño completo con sistema UI/UX de cam-launch (tema oscuro mono, naranja/violeta, bordes punteados, stickers, ticket-mask, barcode). Repo dedicado `HarleyVasquezcom/harleyvasqueztech`, desplegado en Vercel.
