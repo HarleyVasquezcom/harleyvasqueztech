@@ -26,7 +26,7 @@ Sitio estático multi-página (58 páginas) de servicios, productos y zonas para
 
 ## SEO y PWA
 
-- `sitemap.xml` (58 URLs), `robots.txt`, `manifest.webmanifest`, iconos 192/512/maskable, `sw.js` con caché versionada (v84).
+- `sitemap.xml` (58 URLs), `robots.txt`, `manifest.webmanifest`, iconos 192/512/maskable, `sw.js` con caché versionada (v85).
 - Meta SEO/OG por página, `lang="es"`, `geo.*` para Bogotá (CO-DC), JSON-LD `LocalBusiness`.
 
 ## Despliegue
