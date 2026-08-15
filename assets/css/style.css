@@ -333,6 +333,7 @@ h1, h2, h3, h4 {
 .marquee-track { display: flex; width: max-content; animation: marquee-scroll 93.33s linear infinite; }
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-band, .testi-carousel, .zona-carousel { touch-action: pan-y; }
+.marquee-pan { display: flex; width: max-content; }
 .marquee-track, .testi-track, .zona-track { cursor: grab; }
 .marquee-track.dragging, .testi-track.dragging, .zona-track.dragging,
 .marquee-band.dragging, .testi-carousel.dragging, .zona-carousel.dragging { cursor: grabbing; user-select: none; }

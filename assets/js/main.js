@@ -286,97 +286,88 @@
       }, { passive: true });
     }
   }
-/* Carruseles infinitos (marquee, testi, zona): adelantar/retroceder arrastrando
-     con el dedo o el mouse, y con la rueda horizontal */
-  var parseTrackX = function (el) {
-    var t = getComputedStyle(el).transform;
-    if (!t || t === 'none') return 0;
-    var m = t.match(/matrix\(([^)]+)\)/);
-    return m ? (parseFloat(m[1].split(',')[4]) || 0) : 0;
-  };
+/* Carruseles infinitos (marquee, testi, zona): arrastrar con el dedo o el mouse,
+     y rueda horizontal. La banda se queda donde el usuario la deja (modo manual);
+     un toque sin arrastre la devuelve a la animación automática */
   document.querySelectorAll('.marquee-track, .testi-track, .zona-track').forEach(function (track) {
     var host = track.parentElement;
+    var pan = document.createElement('span');
+    pan.className = 'marquee-pan';
+    host.insertBefore(pan, track);
+    pan.appendChild(track);
     host.style.touchAction = 'pan-y';
-    var frozenX = null, dx = 0, startX = 0, moved = false, pointerId = null;
-    var settleTimer = null, springTimer = null;
 
-    var applyPan = function () {
-      track.style.transition = '';
-      clearTimeout(springTimer);
-      track.style.transform = 'translateX(' + (frozenX + dx) + 'px)';
+    var panX = 0, startX = 0, moved = false, pointerId = null, wheelTimer = null;
+
+    var setPan = function (v, smooth) {
+      pan.style.transition = smooth ? 'transform .45s cubic-bezier(.2,.8,.3,1)' : '';
+      pan.style.transform = 'translateX(' + v + 'px)';
     };
-    var freeze = function () {
-      if (frozenX !== null) return;
-      frozenX = parseTrackX(track);
-      track.style.animation = 'none';
-      track.style.transform = 'translateX(' + frozenX + 'px)';
+    var pauseTrack = function () {
+      track.style.animationPlayState = 'paused';
     };
-    var clean = function () {
-      clearTimeout(springTimer);
-      clearTimeout(settleTimer);
-      track.style.transition = '';
-      track.style.transform = '';
-      track.style.animation = '';
-      host.classList.remove('dragging');
-      frozenX = null;
-      dx = 0;
-      moved = false;
+    var resumeTrack = function () {
+      clearTimeout(wheelTimer);
+      track.style.animationPlayState = '';
     };
-    var settle = function () {
-      clearTimeout(settleTimer);
-      settleTimer = setTimeout(function () {
-        track.style.transition = 'transform .55s cubic-bezier(.2,.8,.3,1)';
-        track.style.transform = 'translateX(' + frozenX + 'px)';
-        springTimer = setTimeout(clean, 600);
-      }, 260);
+    var toManual = function () {
+      clearTimeout(wheelTimer);
+      host.classList.add('manual');
+      pauseTrack();
+    };
+    var toAuto = function () {
+      host.classList.remove('manual');
+      resumeTrack();
+      setPan(0, true);
+      panX = 0;
+      setTimeout(function () { pan.style.transition = ''; }, 500);
     };
 
     host.addEventListener('pointerdown', function (e) {
       pointerId = e.pointerId;
       startX = e.clientX;
-      dx = 0;
       moved = false;
-      freeze();
+      pauseTrack();
       if (host.setPointerCapture) { try { host.setPointerCapture(e.pointerId); } catch (err) {} }
     });
     host.addEventListener('pointermove', function (e) {
       if (e.pointerId !== pointerId) return;
-      dx = e.clientX - startX;
+      var dx = e.clientX - startX;
       if (!moved && Math.abs(dx) > 5) moved = true;
-      if (moved) applyPan();
+      if (moved) setPan(panX + dx);
     });
     host.addEventListener('pointerup', function (e) {
       if (e.pointerId !== pointerId) return;
       pointerId = null;
       if (moved) {
+        panX += e.clientX - startX;
         host.classList.add('dragging');
         document.addEventListener('click', function kill(ev) {
           ev.preventDefault();
           ev.stopPropagation();
           document.removeEventListener('click', kill, true);
         }, true);
-        settle();
+        toManual();
+        host.classList.remove('dragging');
+      } else if (host.classList.contains('manual')) {
+        toAuto();
       } else {
-        clean();
+        resumeTrack();
       }
     });
     host.addEventListener('pointercancel', function (e) {
       if (e.pointerId !== pointerId) return;
       pointerId = null;
-      clean();
+      resumeTrack();
     });
     host.addEventListener('wheel', function (e) {
       if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
       e.preventDefault();
-      freeze();
-      dx -= e.deltaX;
-      applyPan();
-      if (!moved) { moved = true; host.classList.add('dragging'); }
-      clearTimeout(settleTimer);
-      settleTimer = setTimeout(function () {
-        host.classList.remove('dragging');
-        settle();
-      }, 320);
+      pauseTrack();
+      panX -= e.deltaX;
+      setPan(panX);
+      clearTimeout(wheelTimer);
+      wheelTimer = setTimeout(function () { toManual(); }, 300);
     }, { passive: false });
   });
 })();
