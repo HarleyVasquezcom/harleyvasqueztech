@@ -299,7 +299,7 @@
     host.style.touchAction = 'pan-y';
 
     var x = 0, v = 0, target = 0, raf = null, settled = true, manual = false;
-    var startX = 0, baseX = 0, moved = false, pointerId = null, wheelTimer = null;
+    var startX = 0, baseX = 0, moved = false, pointerId = null, wheelTimer = null, pressing = false;
 
     var tick = function () {
       v = v * 0.92 + (target - x) * 0.095;
@@ -342,10 +342,14 @@
       startX = e.clientX;
       baseX = x;
       moved = false;
+      pressing = true;
       pan.style.transition = '';
       pauseTrack();
       stopLoop();
       if (host.setPointerCapture) { try { host.setPointerCapture(e.pointerId); } catch (err) {} }
+    });
+    host.addEventListener('selectstart', function (e) {
+      if (pressing) e.preventDefault();
     });
     host.addEventListener('pointermove', function (e) {
       if (e.pointerId !== pointerId) return;
@@ -356,6 +360,7 @@
     host.addEventListener('pointerup', function (e) {
       if (e.pointerId !== pointerId) return;
       pointerId = null;
+      pressing = false;
       host.classList.remove('dragging');
       if (moved) {
         document.addEventListener('click', function kill(ev) {
@@ -374,6 +379,7 @@
     host.addEventListener('pointercancel', function (e) {
       if (e.pointerId !== pointerId) return;
       pointerId = null;
+      pressing = false;
       host.classList.remove('dragging');
       stopLoop();
       resumeTrack();
