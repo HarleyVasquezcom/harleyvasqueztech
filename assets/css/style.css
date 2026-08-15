@@ -332,6 +332,11 @@ h1, h2, h3, h4 {
 .marquee-band.band-footer { border-top: 0; }
 .marquee-track { display: flex; width: max-content; animation: marquee-scroll 93.33s linear infinite; }
 .marquee-track:hover { animation-play-state: paused; }
+.marquee-band, .testi-carousel, .zona-carousel { touch-action: pan-y; }
+.marquee-track, .testi-track, .zona-track { cursor: grab; }
+.marquee-track.dragging, .testi-track.dragging, .zona-track.dragging,
+.marquee-band.dragging, .testi-carousel.dragging, .zona-carousel.dragging { cursor: grabbing; user-select: none; }
+.hero.dragging { user-select: none; }
 .marquee-group { display: flex; gap: 48px; align-items: center; padding-right: 48px; }
 .marquee-group span {
   display: inline-flex; gap: 9px; align-items: center; font-family: var(--mono);
