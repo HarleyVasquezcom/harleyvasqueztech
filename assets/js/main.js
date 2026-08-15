@@ -302,8 +302,8 @@
     var startX = 0, baseX = 0, moved = false, dragging = false, pointerId = null, wheelTimer = null, pressing = false;
 
     var tick = function () {
-      var k = dragging ? 0.16 : 0.02;
-      var d = dragging ? 0.9 : 0.94;
+      var k = dragging ? 0.16 : 0.015;
+      var d = dragging ? 0.9 : 0.97;
       v = v * d + (target - x) * k;
       x += v;
       pan.style.transform = 'translateX(' + x + 'px)';
