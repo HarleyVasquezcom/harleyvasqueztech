@@ -397,10 +397,10 @@ h1, h2, h3, h4 {
 .card-photo {
   min-height: 370px;
   justify-content: flex-end;
-  box-shadow: 0 6px 18px -8px rgba(251,146,60,.14), 0 14px 34px -14px rgba(167,139,250,.10);
+  box-shadow: 0 0 18px -6px rgba(251,146,60,.16), 0 0 34px -10px rgba(167,139,250,.12);
 }
 .card-photo:hover {
-  box-shadow: 0 8px 22px -8px rgba(251,146,60,.18), 0 16px 40px -14px rgba(167,139,250,.13);
+  box-shadow: 0 0 22px -6px rgba(251,146,60,.2), 0 0 42px -10px rgba(167,139,250,.15);
 }
 .card-photo .thumb {
   position: absolute; inset: 0; width: 100%; height: 100%;
