@@ -298,40 +298,28 @@
     pan.appendChild(track);
     host.style.touchAction = 'pan-y';
 
-var x = 0, v = 0, target = 0, raf = null, manual = false;
-    var startX = 0, baseX = 0, moved = false, dragging = false, pointerId = null, wheelTimer = null, pressing = false;
-    var settleT = null;
+var x = 0, v = 0, raf = null, manual = false;
+    var startX = 0, baseX = 0, moved = false, pointerId = null, wheelTimer = null, pressing = false;
+    var samples = [];
 
-    var tick = function () {
-      v = v * 0.85 + (target - x) * 0.3;
+    var glideTick = function () {
       x += v;
+      v *= 0.945;
       pan.style.transform = 'translateX(' + x + 'px)';
-      if (Math.abs(target - x) < 0.3 && Math.abs(v) < 0.05) {
-        x = target; v = 0; raf = null;
+      if (Math.abs(v) < 0.06) {
+        v = 0;
+        raf = null;
         return;
       }
-      raf = requestAnimationFrame(tick);
+      raf = requestAnimationFrame(glideTick);
     };
-    var startLoop = function () {
-      if (!raf) raf = requestAnimationFrame(tick);
+    var startGlide = function () {
+      stopLoop();
+      if (Math.abs(v) < 0.06) return;
+      raf = requestAnimationFrame(glideTick);
     };
     var stopLoop = function () {
       if (raf) { cancelAnimationFrame(raf); raf = null; }
-    };
-    var closeGap = function () {
-      if (settleT) { cancelAnimationFrame(settleT); settleT = null; }
-      var from = x;
-      var to = target;
-      var t0 = Date.now();
-      var step = function () {
-        var p = Math.min((Date.now() - t0) / 180, 1);
-        var e = 1 - Math.pow(1 - p, 3);
-        x = from + (to - from) * e;
-        pan.style.transform = 'translateX(' + x + 'px)';
-        if (p < 1) settleT = requestAnimationFrame(step);
-        else { x = to; v = 0; settleT = null; }
-      };
-      step();
     };
     var pauseTrack = function () { track.style.animationPlayState = 'paused'; };
     var resumeTrack = function () { clearTimeout(wheelTimer); track.style.animationPlayState = ''; };
@@ -346,8 +334,7 @@ var x = 0, v = 0, target = 0, raf = null, manual = false;
       host.classList.remove('manual');
       resumeTrack();
       stopLoop();
-      if (settleT) { cancelAnimationFrame(settleT); settleT = null; }
-      x = 0; v = 0; target = 0;
+      x = 0; v = 0;
       pan.style.transition = 'transform .5s cubic-bezier(.2,.8,.3,1)';
       pan.style.transform = 'translateX(0)';
       setTimeout(function () { pan.style.transition = ''; }, 520);
@@ -359,10 +346,10 @@ var x = 0, v = 0, target = 0, raf = null, manual = false;
       baseX = x;
       moved = false;
       pressing = true;
+      samples = [{ t: Date.now(), x: e.clientX }];
       pan.style.transition = '';
       pauseTrack();
       stopLoop();
-      if (settleT) { cancelAnimationFrame(settleT); settleT = null; }
       if (host.setPointerCapture) { try { host.setPointerCapture(e.pointerId); } catch (err) {} }
     });
     host.addEventListener('selectstart', function (e) {
@@ -372,13 +359,19 @@ var x = 0, v = 0, target = 0, raf = null, manual = false;
       if (e.pointerId !== pointerId) return;
       var dx = e.clientX - startX;
       if (!moved && Math.abs(dx) > 4) { moved = true; host.classList.add('dragging'); }
-      if (moved) { dragging = true; target = baseX + dx; startLoop(); }
+      if (moved) {
+        x = baseX + dx;
+        v = 0;
+        pan.style.transform = 'translateX(' + x + 'px)';
+        var now = Date.now();
+        samples.push({ t: now, x: e.clientX });
+        while (samples.length > 2 && now - samples[0].t > 120) samples.shift();
+      }
     });
     host.addEventListener('pointerup', function (e) {
       if (e.pointerId !== pointerId) return;
       pointerId = null;
       pressing = false;
-      dragging = false;
       host.classList.remove('dragging');
       if (moved) {
         document.addEventListener('click', function kill(ev) {
@@ -387,8 +380,16 @@ var x = 0, v = 0, target = 0, raf = null, manual = false;
           document.removeEventListener('click', kill, true);
         }, true);
         toManual();
-        stopLoop();
-        closeGap();
+        var s = samples;
+        if (s.length >= 2) {
+          var a = s[0];
+          var b = s[s.length - 1];
+          var dt = b.t - a.t;
+          if (dt > 0) v = ((b.x - a.x) / dt) * 16.7;
+          else v = 0;
+        }
+        samples = [];
+        startGlide();
       } else if (manual) {
         toAuto();
       } else {
@@ -399,7 +400,6 @@ var x = 0, v = 0, target = 0, raf = null, manual = false;
       if (e.pointerId !== pointerId) return;
       pointerId = null;
       pressing = false;
-      dragging = false;
       host.classList.remove('dragging');
       stopLoop();
       resumeTrack();
@@ -409,10 +409,9 @@ var x = 0, v = 0, target = 0, raf = null, manual = false;
       e.preventDefault();
       pauseTrack();
       clearTimeout(wheelTimer);
-      if (settleT) { cancelAnimationFrame(settleT); settleT = null; }
       stopLoop();
-      target -= e.deltaX;
-      x = target;
+      x -= e.deltaX;
+      v = 0;
       pan.style.transform = 'translateX(' + x + 'px)';
       wheelTimer = setTimeout(function () {
         manual = true;
