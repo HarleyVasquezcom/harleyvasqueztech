@@ -1,4 +1,4 @@
-var CACHE = 'harley-web-v85';
+var CACHE = 'harley-web-v86';
 var CORE = [
   './',
   './index.html',
