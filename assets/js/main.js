@@ -298,27 +298,40 @@
     pan.appendChild(track);
     host.style.touchAction = 'pan-y';
 
-    var x = 0, v = 0, target = 0, raf = null, settled = true, manual = false;
+var x = 0, v = 0, target = 0, raf = null, manual = false;
     var startX = 0, baseX = 0, moved = false, dragging = false, pointerId = null, wheelTimer = null, pressing = false;
+    var settleT = null;
 
     var tick = function () {
-      var k = dragging ? 0.16 : 0.015;
-      var d = dragging ? 0.9 : 0.97;
-      v = v * d + (target - x) * k;
+      v = v * 0.85 + (target - x) * 0.3;
       x += v;
       pan.style.transform = 'translateX(' + x + 'px)';
       if (Math.abs(target - x) < 0.3 && Math.abs(v) < 0.05) {
-        x = target; v = 0; settled = true; raf = null;
+        x = target; v = 0; raf = null;
         return;
       }
       raf = requestAnimationFrame(tick);
     };
     var startLoop = function () {
-      settled = false;
       if (!raf) raf = requestAnimationFrame(tick);
     };
     var stopLoop = function () {
       if (raf) { cancelAnimationFrame(raf); raf = null; }
+    };
+    var closeGap = function () {
+      if (settleT) { cancelAnimationFrame(settleT); settleT = null; }
+      var from = x;
+      var to = target;
+      var t0 = Date.now();
+      var step = function () {
+        var p = Math.min((Date.now() - t0) / 180, 1);
+        var e = 1 - Math.pow(1 - p, 3);
+        x = from + (to - from) * e;
+        pan.style.transform = 'translateX(' + x + 'px)';
+        if (p < 1) settleT = requestAnimationFrame(step);
+        else { x = to; v = 0; settleT = null; }
+      };
+      step();
     };
     var pauseTrack = function () { track.style.animationPlayState = 'paused'; };
     var resumeTrack = function () { clearTimeout(wheelTimer); track.style.animationPlayState = ''; };
@@ -333,7 +346,8 @@
       host.classList.remove('manual');
       resumeTrack();
       stopLoop();
-      x = 0; v = 0; target = 0; settled = true;
+      if (settleT) { cancelAnimationFrame(settleT); settleT = null; }
+      x = 0; v = 0; target = 0;
       pan.style.transition = 'transform .5s cubic-bezier(.2,.8,.3,1)';
       pan.style.transform = 'translateX(0)';
       setTimeout(function () { pan.style.transition = ''; }, 520);
@@ -348,6 +362,7 @@
       pan.style.transition = '';
       pauseTrack();
       stopLoop();
+      if (settleT) { cancelAnimationFrame(settleT); settleT = null; }
       if (host.setPointerCapture) { try { host.setPointerCapture(e.pointerId); } catch (err) {} }
     });
     host.addEventListener('selectstart', function (e) {
@@ -372,7 +387,8 @@
           document.removeEventListener('click', kill, true);
         }, true);
         toManual();
-        startLoop();
+        stopLoop();
+        closeGap();
       } else if (manual) {
         toAuto();
       } else {
@@ -383,6 +399,7 @@
       if (e.pointerId !== pointerId) return;
       pointerId = null;
       pressing = false;
+      dragging = false;
       host.classList.remove('dragging');
       stopLoop();
       resumeTrack();
@@ -392,8 +409,11 @@
       e.preventDefault();
       pauseTrack();
       clearTimeout(wheelTimer);
+      if (settleT) { cancelAnimationFrame(settleT); settleT = null; }
+      stopLoop();
       target -= e.deltaX;
-      startLoop();
+      x = target;
+      pan.style.transform = 'translateX(' + x + 'px)';
       wheelTimer = setTimeout(function () {
         manual = true;
         host.classList.add('manual');
