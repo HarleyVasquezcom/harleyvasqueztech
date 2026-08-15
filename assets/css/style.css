@@ -413,7 +413,7 @@ h1, h2, h3, h4 {
   position: relative; z-index: 2;
 }
 .card-photo .chip { align-self: flex-start; margin-bottom: 14px; }
-.card-photo h3 { color: var(--amber); }
+.card-photo h3 { color: rgb(251, 146, 60); }
 .card-photo p { flex: none; color: rgba(250,250,250,.82); }
 
 /* ---------- Feature split ---------- */
