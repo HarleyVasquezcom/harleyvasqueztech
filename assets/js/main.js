@@ -287,8 +287,9 @@
     }
   }
 /* Carruseles infinitos (marquee, testi, zona): arrastrar con el dedo o el mouse,
-     y rueda horizontal. La banda se queda donde el usuario la deja (modo manual);
-     un toque sin arrastre la devuelve a la animación automática */
+     y rueda horizontal. Movimiento elástico (resorte) y la banda se queda donde
+     el usuario la deja (modo manual); un toque sin arrastre la devuelve a la
+     animación automática */
   document.querySelectorAll('.marquee-track, .testi-track, .zona-track').forEach(function (track) {
     var host = track.parentElement;
     var pan = document.createElement('span');
@@ -297,59 +298,73 @@
     pan.appendChild(track);
     host.style.touchAction = 'pan-y';
 
-    var panX = 0, startX = 0, moved = false, pointerId = null, wheelTimer = null;
+    var x = 0, v = 0, target = 0, raf = null, settled = true, manual = false;
+    var startX = 0, baseX = 0, moved = false, pointerId = null, wheelTimer = null;
 
-    var setPan = function (v, smooth) {
-      pan.style.transition = smooth ? 'transform .45s cubic-bezier(.2,.8,.3,1)' : '';
-      pan.style.transform = 'translateX(' + v + 'px)';
+    var tick = function () {
+      v = v * 0.86 + (target - x) * 0.16;
+      x += v;
+      pan.style.transform = 'translateX(' + x + 'px)';
+      if (Math.abs(target - x) < 0.3 && Math.abs(v) < 0.05) {
+        x = target; v = 0; settled = true; raf = null;
+        return;
+      }
+      raf = requestAnimationFrame(tick);
     };
-    var pauseTrack = function () {
-      track.style.animationPlayState = 'paused';
+    var startLoop = function () {
+      settled = false;
+      if (!raf) raf = requestAnimationFrame(tick);
     };
-    var resumeTrack = function () {
-      clearTimeout(wheelTimer);
-      track.style.animationPlayState = '';
+    var stopLoop = function () {
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
     };
+    var pauseTrack = function () { track.style.animationPlayState = 'paused'; };
+    var resumeTrack = function () { clearTimeout(wheelTimer); track.style.animationPlayState = ''; };
     var toManual = function () {
       clearTimeout(wheelTimer);
+      manual = true;
       host.classList.add('manual');
       pauseTrack();
     };
     var toAuto = function () {
+      manual = false;
       host.classList.remove('manual');
       resumeTrack();
-      setPan(0, true);
-      panX = 0;
-      setTimeout(function () { pan.style.transition = ''; }, 500);
+      stopLoop();
+      x = 0; v = 0; target = 0; settled = true;
+      pan.style.transition = 'transform .5s cubic-bezier(.2,.8,.3,1)';
+      pan.style.transform = 'translateX(0)';
+      setTimeout(function () { pan.style.transition = ''; }, 520);
     };
 
     host.addEventListener('pointerdown', function (e) {
       pointerId = e.pointerId;
       startX = e.clientX;
+      baseX = x;
       moved = false;
+      pan.style.transition = '';
       pauseTrack();
+      stopLoop();
       if (host.setPointerCapture) { try { host.setPointerCapture(e.pointerId); } catch (err) {} }
     });
     host.addEventListener('pointermove', function (e) {
       if (e.pointerId !== pointerId) return;
       var dx = e.clientX - startX;
-      if (!moved && Math.abs(dx) > 5) moved = true;
-      if (moved) setPan(panX + dx);
+      if (!moved && Math.abs(dx) > 4) moved = true;
+      if (moved) { target = baseX + dx; startLoop(); }
     });
     host.addEventListener('pointerup', function (e) {
       if (e.pointerId !== pointerId) return;
       pointerId = null;
       if (moved) {
-        panX += e.clientX - startX;
-        host.classList.add('dragging');
         document.addEventListener('click', function kill(ev) {
           ev.preventDefault();
           ev.stopPropagation();
           document.removeEventListener('click', kill, true);
         }, true);
         toManual();
-        host.classList.remove('dragging');
-      } else if (host.classList.contains('manual')) {
+        startLoop();
+      } else if (manual) {
         toAuto();
       } else {
         resumeTrack();
@@ -358,16 +373,20 @@
     host.addEventListener('pointercancel', function (e) {
       if (e.pointerId !== pointerId) return;
       pointerId = null;
+      stopLoop();
       resumeTrack();
     });
     host.addEventListener('wheel', function (e) {
       if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
       e.preventDefault();
       pauseTrack();
-      panX -= e.deltaX;
-      setPan(panX);
       clearTimeout(wheelTimer);
-      wheelTimer = setTimeout(function () { toManual(); }, 300);
+      target -= e.deltaX;
+      startLoop();
+      wheelTimer = setTimeout(function () {
+        manual = true;
+        host.classList.add('manual');
+      }, 300);
     }, { passive: false });
   });
 })();
