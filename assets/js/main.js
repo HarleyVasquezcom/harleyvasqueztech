@@ -300,8 +300,23 @@
 
 var x = 0, v = 0, raf = null, manual = false;
     var startX = 0, baseX = 0, moved = false, pointerId = null, wheelTimer = null, pressing = false;
-    var samples = [];
+    var samples = [], pointerX = null, dragRAF = null, dragOpen = false;
 
+    var renderDrag = function () {
+      if (dragOpen) {
+        if (moved) {
+          x = baseX + (pointerX - startX);
+          pan.style.transform = 'translateX(' + x + 'px)';
+        }
+        dragRAF = requestAnimationFrame(renderDrag);
+      } else {
+        dragRAF = null;
+      }
+    };
+    var stopDragLoop = function () {
+      dragOpen = false;
+      if (dragRAF) { cancelAnimationFrame(dragRAF); dragRAF = null; }
+    };
     var glideTick = function () {
       x += v;
       v *= 0.945;
@@ -346,10 +361,14 @@ var x = 0, v = 0, raf = null, manual = false;
       baseX = x;
       moved = false;
       pressing = true;
+      pointerX = e.clientX;
       samples = [{ t: Date.now(), x: e.clientX }];
       pan.style.transition = '';
       pauseTrack();
       stopLoop();
+      stopDragLoop();
+      dragOpen = true;
+      dragRAF = requestAnimationFrame(renderDrag);
       if (host.setPointerCapture) { try { host.setPointerCapture(e.pointerId); } catch (err) {} }
     });
     host.addEventListener('selectstart', function (e) {
@@ -357,12 +376,11 @@ var x = 0, v = 0, raf = null, manual = false;
     });
     host.addEventListener('pointermove', function (e) {
       if (e.pointerId !== pointerId) return;
+      pointerX = e.clientX;
       var dx = e.clientX - startX;
       if (!moved && Math.abs(dx) > 4) { moved = true; host.classList.add('dragging'); }
       if (moved) {
-        x = baseX + dx;
         v = 0;
-        pan.style.transform = 'translateX(' + x + 'px)';
         var now = Date.now();
         samples.push({ t: now, x: e.clientX });
         while (samples.length > 2 && now - samples[0].t > 120) samples.shift();
@@ -373,7 +391,10 @@ var x = 0, v = 0, raf = null, manual = false;
       pointerId = null;
       pressing = false;
       host.classList.remove('dragging');
+      stopDragLoop();
       if (moved) {
+        x = baseX + (pointerX - startX);
+        pan.style.transform = 'translateX(' + x + 'px)';
         document.addEventListener('click', function kill(ev) {
           ev.preventDefault();
           ev.stopPropagation();
@@ -401,6 +422,7 @@ var x = 0, v = 0, raf = null, manual = false;
       pointerId = null;
       pressing = false;
       host.classList.remove('dragging');
+      stopDragLoop();
       stopLoop();
       resumeTrack();
     });
@@ -410,6 +432,7 @@ var x = 0, v = 0, raf = null, manual = false;
       pauseTrack();
       clearTimeout(wheelTimer);
       stopLoop();
+      stopDragLoop();
       x -= e.deltaX;
       v = 0;
       pan.style.transform = 'translateX(' + x + 'px)';

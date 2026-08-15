@@ -917,3 +917,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 768px) {
   .install-app { right: 16px; bottom: 16px; padding: 10px 16px 10px 10px; font-size: 12px; }
 }
+
+/* ---------- Táctiles / móviles: fluidez del carrusel ---------- */
+
+@media (hover: none), (pointer: coarse) {
+  .marquee-pan { will-change: transform; }
+  .marquee-band, .testi-carousel, .zona-carousel {
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
